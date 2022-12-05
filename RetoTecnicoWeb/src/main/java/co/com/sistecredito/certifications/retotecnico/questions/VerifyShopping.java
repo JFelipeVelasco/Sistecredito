@@ -23,22 +23,40 @@ public class VerifyShopping implements Question<Boolean> {
         WaitUntil.the(GO_SHOPPING_CART_BTN, WebElementStateMatchers.isClickable()).forNoMoreThan(3).seconds();
         actor.attemptsTo(Click.on(GO_SHOPPING_CART_BTN));
 
-        float firstPrice;
-        firstPrice = Float.parseFloat(FIRST_ITEM_COST.resolveFor(actor).getText().trim())
-                * Float.parseFloat(FIRST_ITEM_AMT.resolveFor(actor).getValue());
+        String fPrice = FIRST_ITEM_COST.resolveFor(actor).getText().trim();
+        fPrice = fPrice.replaceAll("\\D+", "");
+        System.out.println("STRING" + fPrice);
+        int firstPrice;
+        firstPrice = Integer.parseInt(fPrice)
+                * Integer.parseInt(FIRST_ITEM_AMT.resolveFor(actor).getValue());
 
-        float secondPrice;
-        secondPrice = Float.parseFloat(SECOND_ITEM_COST.resolveFor(actor).getText().trim())
-                * Float.parseFloat(SECOND_ITEM_AMT.resolveFor(actor).getValue());
+        System.out.println(firstPrice);
 
-        float thirdPrice;
-        thirdPrice = Float.parseFloat(THIRD_ITEM_COST.resolveFor(actor).getText().trim())
-                * Float.parseFloat(THIRD_ITEM_AMT.resolveFor(actor).getValue());
+        String sPrice = SECOND_ITEM_COST.resolveFor(actor).getText().trim();
+        sPrice = sPrice.replaceAll("\\D+", "");
+        int secondPrice;
+        secondPrice = Integer.parseInt(sPrice)
+                * Integer.parseInt(SECOND_ITEM_AMT.resolveFor(actor).getValue());
 
-        double finalPrice = firstPrice + secondPrice + thirdPrice;
-        String finalStringPrice = "$ " + finalPrice;
+        System.out.println(secondPrice);
 
-        if (finalStringPrice.equals(SUBTOTAL.resolveFor(actor).getText()))
+        String tPrice = THIRD_ITEM_COST.resolveFor(actor).getText().trim();
+        tPrice = tPrice.replaceAll("\\D+", "");
+        int thirdPrice;
+        thirdPrice = Integer.parseInt(tPrice)
+                * Integer.parseInt(THIRD_ITEM_AMT.resolveFor(actor).getValue());
+
+        System.out.println(thirdPrice);
+
+        int finalPrice = firstPrice + secondPrice + thirdPrice;
+        String finalStringPrice = String.valueOf(finalPrice);
+
+        System.out.println(finalPrice);
+        System.out.println("STRING" + finalStringPrice);
+
+        System.out.println("SUBTOTAL" + SUBTOTAL.resolveFor(actor).getText().replaceAll("\\D+", ""));
+
+        if (finalStringPrice.equals(SUBTOTAL.resolveFor(actor).getText().replaceAll("\\D+", "")))
             answer = true;
 
         return answer;
