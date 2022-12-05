@@ -6,11 +6,9 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.WebElement;
 
 import static co.com.sistecredito.certifications.retotecnico.userinterfaces.HomePage.*;
-import static co.com.sistecredito.certifications.retotecnico.userinterfaces.HomePage.CLOTHING_ITEM;
+import static co.com.sistecredito.certifications.retotecnico.userinterfaces.HomePage.HOME_ITEM;
 import static co.com.sistecredito.certifications.retotecnico.userinterfaces.ItemDetailPage.*;
 import static co.com.sistecredito.certifications.retotecnico.userinterfaces.ItemsPage.RND_ITEM;
 
@@ -53,8 +51,8 @@ public class AddItemsTo implements Task {
         actor.attemptsTo(Click.on(CONTINUE_SHOPPING));
         WaitUntil.the(BTN_CATEGORIES, WebElementStateMatchers.isClickable()).forNoMoreThan(3).seconds();
         actor.attemptsTo(Click.on(BTN_CATEGORIES),
-                Click.on(CLOTHING_CATE),
-                Click.on(CLOTHING_ITEM),
+                Click.on(HOME_CATE),
+                Click.on(HOME_ITEM),
                 Click.on(RND_ITEM),
                 Click.on(ADD_CART_BTN));
         WaitUntil.the(PLUS_BUTTON, WebElementStateMatchers.isClickable()).forNoMoreThan(3).seconds();

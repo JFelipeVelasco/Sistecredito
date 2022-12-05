@@ -11,6 +11,7 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
+import net.serenitybdd.screenplay.rest.questions.ResponseConsequence;
 import org.hamcrest.Matchers;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class RestApiTestStepDefinition {
     @Then("^the user will see the correct response$")
     public void theUserWillSeeTheCorrectResponse(List<Map<String, String>> data) {
 
+        //OnStage.theActorInTheSpotlight().should(ResponseConsequence.seeThatResponse(response -> response.statusCode(data.get(0).get("response"))));
         OnStage.theActorInTheSpotlight().should(seeThat(ValidationCode.match(data.get(0).get("response")), Matchers.is(true)));
     }
 
