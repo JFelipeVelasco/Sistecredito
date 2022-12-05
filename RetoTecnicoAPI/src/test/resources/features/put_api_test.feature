@@ -22,5 +22,5 @@ Feature: As user i need to realize the operations PUT to the REST service
 
     Examples:
       | id  | name     | gender | response | message                                  |
-      | 1   | Test PUT | Female | 200      | Member with id 1 is updated successfully |
+      | 4   | Test PUT | Female | 200      | Member with id 4 is updated successfully |
       | 999 | Test PUT | Female | 404      | Member with id 999 doesn't exist         |
